@@ -1,8 +1,8 @@
 package com.athub.controller;
 
-import com.athub.framework.common.model.Result;
-import com.athub.framework.common.model.ResultBuilder;
 import com.athub.job.HelloJob;
+import com.athub.model.Result;
+import com.athub.utils.ResultUtil;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
@@ -24,7 +24,7 @@ import static org.quartz.TriggerBuilder.newTrigger;
 public class QuartzController {
 
     @PostMapping("/test1")
-    public Result<String, String, ?> test1() {
+    public Result test1() {
         try {
             // Grab the Scheduler instance from the Factory
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -53,7 +53,7 @@ public class QuartzController {
         } catch (SchedulerException se) {
             se.printStackTrace();
         }
-        return ResultBuilder.success(null);
+        return ResultUtil.success(null);
     }
 
 }
